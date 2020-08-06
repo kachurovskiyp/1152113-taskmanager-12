@@ -1,16 +1,12 @@
 import {COLORS} from "../const.js";
+import {DESCRIPTIONS} from "../const.js";
 import {getRandomInteger} from "../utils.js";
 
+
 const generateDescription = () => {
-  const descriptions = [
-    `Изучить теорию`,
-    `Сделать домашку`,
-    `Пройти интенсив на соточку`
-  ];
+  const randomIndex = getRandomInteger(0, DESCRIPTIONS.length - 1);
 
-  const randomIndex = getRandomInteger(0, descriptions.length - 1);
-
-  return descriptions[randomIndex];
+  return DESCRIPTIONS[randomIndex];
 };
 
 const generateDate = () => {
