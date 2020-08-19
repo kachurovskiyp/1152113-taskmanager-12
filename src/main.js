@@ -8,12 +8,12 @@ import SortView from "./view/sort.js";
 import TaskListView from "./view/task-list.js";
 import {generateTask} from "./mock/task.js";
 import {generateFilter} from "./mock/filter.js";
-import {renderTemplate, render, RenderPosition} from "./utils.js";
+import {render, RenderPosition} from "./utils.js";
 
 const TASK_COUNT = 22;
 const TASK_COUNT_PER_STEP = 8;
 
-const tasks = new Array(TASK_COUNT).fill('').map(generateTask);
+const tasks = new Array(TASK_COUNT).fill(``).map(generateTask);
 const filters = generateFilter(tasks);
 
 const renderTask = (taskListElement, task) => {

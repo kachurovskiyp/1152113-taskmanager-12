@@ -74,7 +74,7 @@ const createTaskEditColorsTemplate = (currentColor) => {
 };
 
 const createTaskEditTemplate = (task) => {
-const {color, description, dueDate, repeating} = task;
+  const {color, description, dueDate, repeating} = task;
 
   const deadlineClassName = isTaskExpired(dueDate)
     ? `card--deadline`
