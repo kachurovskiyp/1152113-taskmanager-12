@@ -8,7 +8,8 @@ import SortView from "./view/sort.js";
 import TaskListView from "./view/task-list.js";
 import {generateTask} from "./mock/task.js";
 import {generateFilter} from "./mock/filter.js";
-import {render, RenderPosition} from "./utils.js";
+import {render} from "./utils.js";
+import {RENDER_POSITION} from "./const.js";
 
 const TASK_COUNT = 22;
 const TASK_COUNT_PER_STEP = 8;
@@ -37,22 +38,22 @@ const renderTask = (taskListElement, task) => {
     replaceFormToCard();
   });
 
-  render(taskListElement, taskComponent.getElement(), RenderPosition.BEFOREEND);
+  render(taskListElement, taskComponent.getElement(), RENDER_POSITION.BEFOREEND);
 };
 
 const siteMainElement = document.querySelector(`.main`);
 const siteHeaderElement = siteMainElement.querySelector(`.main__control`);
 
-render(siteHeaderElement, new SiteMenuView().getElement(), RenderPosition.BEFOREEND);
-render(siteMainElement, new FilterView(filters).getElement(), RenderPosition.BEFOREEND);
+render(siteHeaderElement, new SiteMenuView().getElement(), RENDER_POSITION.BEFOREEND);
+render(siteMainElement, new FilterView(filters).getElement(), RENDER_POSITION.BEFOREEND);
 
 const boardComponent = new BoardView();
-render(siteMainElement, boardComponent.getElement(), RenderPosition.BEFOREEND);
-render(boardComponent.getElement(), new SortView().getElement(), RenderPosition.AFTERBEGIN);
+render(siteMainElement, boardComponent.getElement(), RENDER_POSITION.BEFOREEND);
+render(boardComponent.getElement(), new SortView().getElement(), RENDER_POSITION.AFTERBEGIN);
 
 const taskListComponent = new TaskListView();
-render(boardComponent.getElement(), taskListComponent.getElement(), RenderPosition.BEFOREEND);
-render(taskListComponent.getElement(), new TaskEditView(tasks[0]).getElement(), RenderPosition.BEFOREEND);
+render(boardComponent.getElement(), taskListComponent.getElement(), RENDER_POSITION.BEFOREEND);
+render(taskListComponent.getElement(), new TaskEditView(tasks[0]).getElement(), RENDER_POSITION.BEFOREEND);
 
 for (let i = 0; i < Math.min(tasks.length, TASK_COUNT_PER_STEP); i++) {
   renderTask(taskListComponent.getElement(), tasks[i]);
